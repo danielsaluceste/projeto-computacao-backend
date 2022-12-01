@@ -24,6 +24,11 @@ export class ProductsController {
         return this.ProductService.getById(id);
     }
 
+    @Delete('/:id')
+    async delete(@Param() id: string) : Promise<Product> {
+        return this.ProductService.delete(id);
+    }
+
     @Post('photo')
     async postPhoto(@Body() photo: any) {
         return this.ProductService.postPhoto(photo);

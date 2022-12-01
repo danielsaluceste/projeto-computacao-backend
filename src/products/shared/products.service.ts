@@ -27,6 +27,12 @@ export class ProductService {
         }
     }
 
+    async delete(id: string) {
+        var mongoose = require('mongoose');
+        var _id = mongoose.Types.ObjectId(id);
+        return await this.ProductModel.findByIdAndRemove(_id).exec();
+    }
+
     async findAll() {
         return await this.ProductModel.find().exec();
     }

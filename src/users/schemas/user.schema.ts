@@ -2,11 +2,6 @@ import * as mongoose from 'mongoose';
 
 export const UserSchema = new mongoose.Schema({
     nome: String,
-    cpf: {
-        type: String,
-        required: true,
-        unique: true,
-    },
     endereco: String,
     nascimento: String,
     cep: String,
