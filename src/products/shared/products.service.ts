@@ -40,7 +40,10 @@ export class ProductService {
     async getById(id: string) {
         var mongoose = require('mongoose');
         var _id = mongoose.Types.ObjectId(id);
-        return await this.ProductModel.findById(_id).exec();
+        let prod = await this.ProductModel.findById(_id).exec();
+        let user = await this.UserService.getUserById(prod.user);
+        prod.user = user;
+        return prod;
     }
 
     async postPhoto(img) {

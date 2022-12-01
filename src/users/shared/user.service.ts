@@ -51,4 +51,17 @@ export class UserService {
         }
     }
 
+    async getUserById(id: string) {
+        try {
+            var user = await this.UserModel
+                .findById(id)
+                .exec();
+            if (user != null) {
+                return user;
+            }
+        } catch (error) {
+            throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+        }
+    }
+
 }
